@@ -83,3 +83,38 @@ class Empleado:
 # Ejemplo de uso:
 empleado = Empleado(456, 60000)
 print(empleado)
+
+
+class Cliente:
+    def __init__(self, id_cliente, email):
+        self._id_cliente = id_cliente
+        self._email = email
+
+    @property
+    def id_cliente(self):
+        return self._id_cliente
+
+    @id_cliente.setter
+    def id_cliente(self, value):
+        if isinstance(value, int) and value > 0:
+            self._id_cliente = value
+        else:
+            raise ValueError("El ID del cliente debe ser un entero positivo.")
+
+    @property
+    def email(self):
+        return self._email
+
+    @email.setter
+    def email(self, value):
+        if isinstance(value, str) and '@' in value:
+            self._email = value
+        else:
+            raise ValueError("El email debe ser una dirección de correo válida.")
+
+    def __str__(self):
+        return f"Cliente[ID: {self._id_cliente}, Email: {self._email}]"
+
+# Ejemplo de uso:
+cliente = Cliente(789, 'cliente@example.com')
+print(cliente)
